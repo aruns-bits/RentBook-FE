@@ -1,0 +1,11 @@
+[
+    {"name":"The Art of War", "author":"Sun Tzu", "language":"eng", "type":"art", "description":"best seller"},
+    {"name":"Refreshing Mandala", "author":"Dreamland Publications", "language":"eng", "type":"art", "description":"best seller"},
+    {"name":"History Of Indian Art", "author":"Devender kumari ", "language":"eng", "type":"art", "description":"nice book"},
+    {"name":"Buddhist Art ", "author":"Robert Beer", "language":"eng", "type":"art", "description":"inspiring book"},
+    {"name":"The Art of Happiness", "author":"Dalai Lama ", "language":"eng", "type":"art", "description":"one of the best"},
+
+    {"name":"Dark Horse", "author":"Nilotpal Mrinal", "language":"hindi", "type":"novel", "description":"one of the best"},
+    {"name":"Gaban", "author":"Premchand", "language":"hindi", "type":"novel", "description":"one of the best"},
+    {"name":"Devdas", "author":"Sarat chandra Chattopadhyay", "language":"hindi", "type":"novel", "description":"best seller"}
+]
