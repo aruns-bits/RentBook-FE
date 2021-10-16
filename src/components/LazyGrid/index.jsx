@@ -1,26 +1,30 @@
-import React from "react";
-import { AgGridColumn, AgGridReact } from "ag-grid-react";
+import React, { useState, useEffect } from "react"
+import { AgGridColumn, AgGridReact } from "ag-grid-react"
 
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+import Button from "@mui/material/Button"
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import Books from "../../data/books.json";
+import "ag-grid-community/dist/styles/ag-grid.css"
+import "ag-grid-community/dist/styles/ag-theme-alpine.css"
+import Books from "../../data/books.json"
 import styles from "./LazyGrid.module.scss"
 import * as api from "../../Api/index"
-const filterBooks = (name, author, language) => {
-  let books = [...Books];
-  if (name) books = books.filter((book) => book.name.startsWith(name));
-  if (author) books = books.filter((book) => book.author.startsWith(author));
-  if (language) books = books.filter((book) => book.language === language);
-  return books;
-};
+const filterBooks = (name, author, language, data) => {
+  let books = [...data]
+  if (name) books = books.filter((book) => book.name.startsWith(name))
+  if (author) books = books.filter((book) => book.author.startsWith(author))
+  if (language) books = books.filter((book) => book.language === language)
+  return books
+}
 const LazyGrid = ({ name, author, language }) => {
-  const rowData = [...filterBooks(name, author, language)];
-  api.getBooks().then(books=>console.log(books))
+  const [data, setData] = useState([])
 
+  useEffect(() => {
+    api.getBooks().then((response) => setData(response.data))
+  }, [])
+
+  let rowData = data.length ? filterBooks(name, author, language, data) : []
   return (
     <Box sx={{ flexGrow: 1 }} className={styles.LazyGrid}>
       <Grid container spacing={2}>
@@ -40,14 +44,18 @@ const LazyGrid = ({ name, author, language }) => {
         <Grid item xs={12} container>
           <Grid item xs={9} />
           <Grid item xs={3}>
-            <Button variant="contained" onClick={() => null } className={styles.rentBook}>
+            <Button
+              variant="contained"
+              onClick={() => null}
+              className={styles.rentBook}
+            >
               RENT THE BOOK
             </Button>
           </Grid>
         </Grid>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default LazyGrid;
+export default LazyGrid
