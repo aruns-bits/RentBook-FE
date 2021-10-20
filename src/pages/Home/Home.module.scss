@@ -1,0 +1,16 @@
+.Home {
+  height: 80vh;
+  padding-top: 10em;
+  background-image: url("../../assets/booksBg.jpg");
+
+  .welcomeTxtBox {
+    height: 10em;
+    background-color: #fff;
+    width: 40%;
+    border-radius: 1em;
+    opacity: 0.8;
+    .txt {
+      padding: 1em;
+    }
+  }
+}
